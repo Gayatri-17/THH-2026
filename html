@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MotiveLens - Behavioral Crime Analysis</title>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+<h1>MotiveLens</h1>
+<h3 style="text-align:center; color:#94a3b8; margin-top:-10px;">Analyzing Crime Through a Psychological Lens</h3>
+
+<div class="card">
+<h2>Crime Input</h2>
+
+<label>Crime Type</label>
+<select id="crimeType">
+<option>Theft</option>
+<option>Assault</option>
+<option>Fraud</option>
+<option>Arson</option>
+<option>Homicide</option>
+</select>
+
+<label>Victim Relationship</label>
+<select id="relationship">
+<option>Stranger</option>
+<option>Family</option>
+<option>Partner</option>
+<option>Colleague</option>
+</select>
+
+<label>Planning Level</label>
+<select id="planning">
+<option>Impulsive</option>
+<option>Planned</option>
+</select>
+
+<label>Repetition</label>
+<select id="repeat">
+<option>First-time</option>
+<option>Repeated</option>
+</select>
+
+<label>Trigger</label>
+<select id="trigger">
+<option>Financial Stress</option>
+<option>Jealousy</option>
+<option>Revenge</option>
+<option>Unknown</option>
+</select>
+
+<button onclick="analyzeCrime()">Analyze</button>
+</div>
+
+<div class="card result-box" id="results" style="display:none;">
+<h2>Analysis Result</h2>
+<p id="primaryMotive"></p>
+<p id="offenderType"></p>
+<p id="riskLevel"></p>
+
+<div class="meter">
+<div class="meter-fill" id="riskMeter"></div>
+</div>
+
+<canvas id="motiveChart"></canvas>
+
+<h3>Behavioral Summary</h3>
+<p id="summary"></p>
+</div>
+
+</div>
+
+<!-- Offender Explanation -->
+<div class="profile-info-section">
+    <h2>Offender Classification Guide</h2>
+
+    <button onclick="toggleProfileInfo()">Toggle Organized vs Disorganized Explanation</button>
+
+    <div id="profileInfoBox" style="display:none; margin-top:15px;">
+        <h3>Organized Offender</h3>
+        <p>• Planned actions<br>
+           • Controlled crime scene<br>
+           • Strategic motive<br>
+           • Higher cognitive control</p>
+
+        <h3>Disorganized Offender</h3>
+        <p>• Impulsive behavior<br>
+           • Emotional instability<br>
+           • Chaotic crime scene<br>
+           • Reactive aggression</p>
+    </div>
+</div>
+
+<!-- Advanced Behavioral Section -->
+<div class="behavior-section">
+
+    <h2>Advanced Case Profiling</h2>
+
+    <div class="input-group">
+        <label>Crime Category</label>
+        <select id="crimeCategory">
+            <option value="">Select</option>
+            <option value="financial">Financial Crime</option>
+            <option value="violent">Violent Crime</option>
+            <option value="cyber">Cyber Crime</option>
+            <option value="domestic">Domestic Incident</option>
+        </select>
+    </div>
+
+    <div class="input-group">
+        <label>Emotional State Observed</label>
+        <select id="emotionalState">
+            <option value="">Select</option>
+            <option value="calm">Calm & Controlled</option>
+            <option value="angry">Angry / Aggressive</option>
+            <option value="desperate">Desperate / Stressed</option>
+            <option value="unknown">Unknown</option>
+        </select>
+    </div>
+
+    <div class="input-group">
+        <label>Level of Planning</label>
+        <select id="planningDepth">
+            <option value="">Select</option>
+            <option value="impulsive">Impulsive</option>
+            <option value="partial">Partially Planned</option>
+            <option value="premeditated">Highly Premeditated</option>
+        </select>
+    </div>
+
+    <button onclick="runBehaviorAnalysis()">Run Analysis</button>
+    <button onclick="clearBehaviorInputs()">Clear</button>
+
+    <div id="behaviorOutput" class="behavior-output" style="display:none;"></div>
+
+</div>
+<script src="script.js"></script>
+</body>
+</html>   
