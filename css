@@ -1,0 +1,128 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #0f172a;
+    color: white;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #38bdf8;
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+}
+
+.card {
+    background: #1e293b;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+select, button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: none;
+}
+
+button {
+    background: #38bdf8;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0ea5e9;
+}
+
+.result-box {
+    margin-top: 15px;
+}
+
+.meter {
+    height: 20px;
+    border-radius: 10px;
+    background: gray;
+    margin-top: 10px;
+}
+
+.meter-fill {
+    height: 100%;
+    border-radius: 10px;
+    width: 0%;
+    background: green;
+}
+
+/* Advanced Section */
+.behavior-section {
+    max-width: 650px;
+    margin: 60px auto;
+    background: #1e293b;
+    padding: 25px;
+    border-radius: 12px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #94a3b8;
+}
+
+.behavior-section select,
+.behavior-section button {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: none;
+    margin-bottom: 10px;
+}
+
+.behavior-section button {
+    background: #3b82f6;
+    color: white;
+}
+
+.behavior-section button:hover {
+    background: #2563eb;
+}
+
+.behavior-output {
+    margin-top: 20px;
+    background: #334155;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.profile-info-section {
+    max-width: 650px;
+    margin: 40px auto;
+    background: #1e293b;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.profile-info-section button {
+    width: 100%;
+    padding: 10px;
+    background: #475569;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.profile-info-section button:hover {
+    background: #64748b;
+}
