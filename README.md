@@ -13,6 +13,7 @@ Built entirely using frontend technologies, the project emphasizes simplicity, c
 Overall, MotiveLens represents an exploratory step toward merging technology with forensic psychology principles into an interactive analytical tool. It highlights how structured behavioral reasoning can evolve into a functional web-based investigative assistant.
 
 ### Features
+
 * Crime Motivation Analysis
 * Behavioral Profiling Output
 * Risk Level Visualization (Risk Meter)
@@ -35,6 +36,12 @@ Overall, MotiveLens represents an exploratory step toward merging technology wit
 * Multi-case Comparative Analysis
 * Exportable Investigation Reports
 * Real-time Risk Prediction Enhancements
+
+### Reflection
+
+MotiveLens is an early exploration into how structured behavioral reasoning can be transformed into interactive digital experiences.
+
+Though simplified, the project showcases the potential of blending psychological insights with intuitive interfaces to foster and support analytical thinking. It stands as a personal learning initiative aimed at understanding how digital systems can model and simulate complex human-centered reasoning.
 
 
 
