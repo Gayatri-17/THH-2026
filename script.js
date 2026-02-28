@@ -1,6 +1,7 @@
- let chartInstance;
+let chartInstance;
 
 function analyzeCrime() {
+
 let crimeType = document.getElementById("crimeType").value;
 let relationship = document.getElementById("relationship").value;
 let planning = document.getElementById("planning").value;
@@ -23,6 +24,10 @@ if(crimeType === "Homicide") power += 2;
 
 let total = greed + revenge + power + impulse;
 if(total === 0) total = 1; 
+
+let confidence = "Low";
+if(total >= 5) confidence = "Moderate";
+if(total >= 8) confidence = "High";
 
 let greedP = Math.round((greed/total)*100);
 let revengeP = Math.round((revenge/total)*100);
@@ -89,7 +94,7 @@ document.getElementById("results").style.display = "block";
 document.getElementById("primaryMotive").innerHTML = "<strong>Primary Motivation:</strong> " + primary;
 document.getElementById("offenderType").innerHTML = "<strong>Offender Type:</strong> " + offenderType;
 document.getElementById("riskLevel").innerHTML = "<strong>Risk Level:</strong> " + riskText;
-
+document.getElementById("confidenceLevel").innerHTML = "<strong>Analysis Confidence:</strong> " + confidence;
 let meter = document.getElementById("riskMeter");
 meter.style.width = riskScore + "%";
 meter.style.background = riskColor;
@@ -247,4 +252,4 @@ function loadCases() {
         `;
     });
 }
-window.onload = loadCases; 
+window.onload = loadCases;
