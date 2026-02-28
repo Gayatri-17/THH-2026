@@ -64,6 +64,7 @@
 <p id="primaryMotive"></p>
 <p id="offenderType"></p>
 <p id="riskLevel"></p>
+<p id="priorityLevel"></p>
 
 <div class="meter">
 <div class="meter-fill" id="riskMeter"></div>
@@ -73,9 +74,19 @@
 
 <h3>Behavioral Summary</h3>
 <p id="summary"></p>
+<p id="stabilityTag"></p>
+<p id="evolutionPrediction"></p>
+<p id="priorityLevel"></p>
+<p id="motiveBlend"></p>
+</div>
 </div>
 
-</div>
+<h2>Case Log</h2>
+<div id="caseLog"></div>
+
+<button onclick="localStorage.clear(); loadCases();">
+Clear Case Log
+</button>
 
 <!-- Offender Explanation -->
 <div class="profile-info-section">
