@@ -1,7 +1,6 @@
-let chartInstance;
+ let chartInstance;
 
 function analyzeCrime() {
-
 let crimeType = document.getElementById("crimeType").value;
 let relationship = document.getElementById("relationship").value;
 let planning = document.getElementById("planning").value;
@@ -23,6 +22,7 @@ if(crimeType === "Fraud") greed += 2;
 if(crimeType === "Homicide") power += 2;
 
 let total = greed + revenge + power + impulse;
+if(total === 0) total = 1; 
 
 let greedP = Math.round((greed/total)*100);
 let revengeP = Math.round((revenge/total)*100);
@@ -38,7 +38,25 @@ let motives = {
 
 let primary = Object.keys(motives).reduce((a,b)=> motives[a] > motives[b] ? a : b);
 
+// ---------- Motive Blend Detection ----------
+let motiveValues = Object.entries(motives).sort((a,b)=> b[1]-a[1]);
+let blendText = "Single dominant motive";
+
+if(Math.abs(motiveValues[0][1] - motiveValues[1][1]) <= 10){
+    blendText = "Dual Motivation Detected: " + motiveValues[0][0] + " + " + motiveValues[1][0];
+}
+
 let offenderType = (planning === "Planned") ? "Organized Offender" : "Disorganized Offender";
+
+// ---------- Behavioral Stability ----------
+let stability = "Stable";
+
+if(planning === "Impulsive" && repeat === "Repeated"){
+    stability = "Escalating Behavior Pattern";
+}
+else if(planning === "Impulsive"){
+    stability = "Volatile Behavior Pattern";
+}
 
 let riskScore = 0;
 if(repeat === "Repeated") riskScore += 50;
@@ -57,6 +75,16 @@ if(riskScore > 70) {
     riskColor = "red";
 }
 
+// ---------- Investigative Priority ----------
+let priority = "Monitor";
+
+if(riskScore > 70){
+    priority = "Immediate Attention Required";
+}
+else if(riskScore > 40){
+    priority = "Active Monitoring Recommended";
+} 
+
 document.getElementById("results").style.display = "block";
 document.getElementById("primaryMotive").innerHTML = "<strong>Primary Motivation:</strong> " + primary;
 document.getElementById("offenderType").innerHTML = "<strong>Offender Type:</strong> " + offenderType;
@@ -71,6 +99,34 @@ document.getElementById("summary").innerText =
 ". The offender demonstrates characteristics of an " + offenderType +
 ". Risk assessment indicates a " + riskText +
 " probability of repeated or escalating behavior.";
+
+// ---------- Evolution Prediction ----------
+let evolution = "Behavior unlikely to escalate significantly";
+
+if(repeat === "Repeated" && planning === "Planned"){
+    evolution = "Likely progression toward strategic escalation";
+}
+else if(planning === "Impulsive"){
+    evolution = "Unpredictable recurrence likely";
+}
+
+// ---------- Display ----------
+document.getElementById("stabilityTag").innerHTML =
+"<strong>Behavioral Stability:</strong> " + stability;
+
+document.getElementById("evolutionPrediction").innerHTML =
+"<strong>Evolution Prediction:</strong> " + evolution;
+
+document.getElementById("priorityLevel").innerHTML =
+"<strong>Investigative Priority:</strong> " + priority;
+
+document.getElementById("motiveBlend").innerHTML =
+"<strong>Motive Pattern:</strong> " + blendText;
+
+let severity = document.getElementById("repeat").value;
+let generatedProfile = document.getElementById("summary").innerText;
+saveCase(crimeType, severity, relationship, planning, trigger, generatedProfile, priority);
+loadCases();
 
 if(chartInstance) chartInstance.destroy();
 
@@ -149,3 +205,46 @@ function toggleProfileInfo() {
     let box = document.getElementById("profileInfoBox");
     box.style.display = box.style.display === "none" ? "block" : "none";
 } 
+
+function saveCase(crimeType, severity, relationship, planning, trigger, result, priority) {
+    let caseData = {
+        caseId: "ML-" + Date.now(),
+        crimeType,
+        severity,
+        relationship,
+        planning,
+        trigger,
+        result,
+        priority,
+        time: new Date().toLocaleString()
+    };
+
+    let history = JSON.parse(localStorage.getItem("cases")) || [];
+    history.push(caseData);
+
+    localStorage.setItem("cases", JSON.stringify(history));
+} 
+
+function loadCases() {
+    let history = JSON.parse(localStorage.getItem("cases")) || [];
+    let log = document.getElementById("caseLog");
+
+    log.innerHTML = "";
+
+    history.reverse().forEach(caseItem => {
+        log.innerHTML += `
+        <div style="border:1px solid #ccc; padding:10px; margin:10px;">
+            <b>Case ID:</b> ${caseItem.caseId} <br>
+            <b>Crime:</b> ${caseItem.crimeType} <br>
+            <b>Repetition:</b> ${caseItem.severity} <br>
+            <b>Relationship:</b> ${caseItem.relationship} <br>
+            <b>Planning Level:</b> ${caseItem.planning} <br>
+            <b>Trigger:</b> ${caseItem.trigger} <br>
+            <b>Investigative Priority:</b> ${caseItem.priority || "Monitor"} <br>
+            <b>Behavioral Summary:</b> ${caseItem.result} <br>
+            <small>${caseItem.time}</small>
+        </div>
+        `;
+    });
+}
+window.onload = loadCases; 
