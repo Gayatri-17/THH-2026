@@ -1,6 +1,5 @@
 # MotiveLens        
 ### Tagline
-
 **An interactive behavioral analysis simulator for structured crime investigation insights.**
 
 MotiveLens is a frontend-based forensic psychology web application designed to simulate how behavioral analysis can support criminal investigations. It allows users to input structured crime case details and generates psychological profiling insights, risk assessment indicators, and organized investigative recommendations. The platform aims to bridge the gap between theoretical forensic psychology concepts and practical investigative reasoning through an interactive and intuitive digital interface.
