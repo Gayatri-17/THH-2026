@@ -11,3 +11,31 @@ The application features crime motivation analysis, a visual risk meter, structu
 Built entirely using frontend technologies, the project emphasizes simplicity, clarity, and clean user experience design. Operating without a backend makes it lightweight, fast, and easy to deploy. Its modular architecture also leaves room for future scalability, including potential integration of persistent storage, advanced analytics, or AI-driven modeling.
 
 Overall, MotiveLens represents an exploratory step toward merging technology with forensic psychology principles into an interactive analytical tool. It highlights how structured behavioral reasoning can evolve into a functional web-based investigative assistant.
+
+### Features
+* Crime Motivation Analysis
+* Behavioral Profiling Output
+* Risk Level Visualization (Risk Meter)
+* Organized vs Disorganized Trait Indicators
+* Investigation Recommendation Panel
+* Local Case Log Storage
+* Lightweight & Fully Frontend-Based
+
+### Tech Stack
+
+* **HTML5** – Structure
+* **CSS3** – Styling & UI Design
+* **JavaScript** – Logic & Behavioral Analysis Simulation
+* **Local Storage API** – Case Log Persistence
+  
+### Future Scope
+
+* Backend Integration for Persistent Databases
+* AI-Assisted Behavioral Modeling
+* Multi-case Comparative Analysis
+* Exportable Investigation Reports
+* Real-time Risk Prediction Enhancements
+
+
+
+
